@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>formulier</title>
+    <link href="style/StyleSheet.css" rel="stylesheet" />
+    <!-- TO DO: placeholder toevoegen met Modernizr -->
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>contact info</legend>
+            <!-- divs vermijden -->
+            <!-- nog geen required of andere HTML5 attributes, doen we samen met Modernizr-->
+            <label for="voornaam">Voornaam:</label>
+            <input type="text" id="voornaam" />
+
+            <label for="familienaam">Naam:</label>
+            <input type="text" id="familienaam" />
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" />
+
+            <!--werk unobtrusive ! Geen onclick='  ' -->
+            <input type="submit" id="submitButton" name="submitButton" />
+
+        </fieldset>
+    </form>
+    <script src="scripts/validate.js"></script>
+</body>
+</html>

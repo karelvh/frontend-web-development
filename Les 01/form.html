@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FORM</title>
+  <style media="screen">
+    body{
+      font-family: sans-serif;
+    }
+    input{
+      display: block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <form onsubmit="controle()">
+    First name:
+    <input type="text" name="firstname" required>
+    Last name:
+    <input type="text" name="lastname" required>
+    Email:
+    <input type="email" name="email" required>
+    <input type="submit" id="submitter" name="confirm" value="CONFIRM >>">
+  </form>
+
+
+  <script type="text/javascript">
+  window.addEventListener("DOMContentLoaded", function() {init();});
+
+  function init(){
+    document.getElementById("submitter").addEventListener("click", function(event){
+        confirm(event);
+    });
+  }
+  function confirm(event){
+    var inputs = document.getElementsByTagName("input");
+    var i;
+    for (var i = 0; i < inputs.length; i++) {
+         if (inputs[i].type == "text" || inputs[i].type == "email"){
+          if (inputs[i].value === null || inputs[i].value === "") {
+            inputs[i].style.border = "2px solid red";
+            event.preventDefault();
+          };
+         };
+    }
+  }
+  </script>
+</body>
+</html>

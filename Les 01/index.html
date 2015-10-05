@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>navigator Les 01</title>
+  <style media="screen">
+    ul{
+      list-style: none;
+    }
+    li span{
+      font-weight: bold;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Browser Info</legend>
+    <div id="info"></div>
+  </fieldset>
+
+  <script type="text/javascript">
+    //00.variablen globaal :()
+    var content = "<ul>";
+    var property;
+    for(property in navigator){
+      content += "<li><span>"+property + ":</span>" + navigator[property] + "</li>";
+    }
+
+    content += "</ul>";
+    document.getElementById("info").innerHTML = content;
+  </script>
+</body>
+</html>
