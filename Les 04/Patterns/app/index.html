@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script src="js/Particle.js"></script>
+    <script>
+        /*init();
+        function init() {}*/
+        (function(){
+            "use strict";
+            var     SCREEN_WIDTH = window.innerWidth,
+                    SCREEN_HEIGHT = window.innerHeight,
+                    HALF_WIDTH = SCREEN_WIDTH / 2,
+                    HALF_HEIGHT = SCREEN_HEIGHT / 2,
+
+                    canvas = document.createElement("canvas"),
+                    context = canvas.getContext("2d"),
+                    /*velX = 1,
+                    velY = 1,
+                    posX = HALF_WIDTH,
+                    posY = HALF_HEIGHT,*/
+                    particle = new Particle(HALF_WIDTH, HALF_HEIGHT),
+                    particles = [],
+                    MAX_PARTICLES = 100;
+                    /*particle.velX = 10;
+                    particle.velY = 10;
+                    particle.render(context);*/
+
+
+
+            (function setup(){
+                var container = document.createElement("div");
+                document.body.appendChild(container);
+
+                canvas.width = SCREEN_WIDTH;
+                canvas.height = SCREEN_HEIGHT;
+                container.appendChild(canvas);
+
+                //RECTANGLE:
+                context.fillStyle = "rgb(0,0,0)";
+                context.fillRect(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+
+                //ELLIPSE:
+                particle.render(context);
+                /*context.beginPath();
+                context.fillStyle = "rgb(255,255,255)";
+                context.arc(posX, posY, 50, 0, 360, false);
+                context.closePath();
+                context.fill();*/
+            })();
+
+            setInterval(loop, 1000 / 30);
+
+            function loop(){
+                /*posX += velX;
+                posY += velY;*/
+
+                context.fillStyle = "rgb(0,0,0)";
+                context.fillRect(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+
+                /*context.beginPath();
+                context.fillStyle = "rgb(255,255,255)";
+                context.arc(posX, posY, 50, 0, 360, false);
+                context.closePath();
+                context.fill();*/
+                makeParticles(4);
+                for(var i = 0, l=particles.length; i <l; i++){
+                    var particle = particles[i];
+                    particle.update();
+                    particle.render(context);
+                }
+
+                while(particles.length > MAX_PARTICLES){
+                    particles.shift();
+                }
+            }
+
+            function makeParticles(particleCount){
+                for(var i= 0; i< particleCount; i++){
+                    var particle = new Particle(HALF_WIDTH, HALF_HEIGHT);
+                    particle.velX = (Math.random() *20)-10;
+                    particle.velY = (Math.random() *20)-10;
+
+                    particle.drag = 0.95;
+                    particle.gravity = 0.5;
+
+                    particles.push(particle);
+                }
+            }
+        })()
+
+
+    </script>
+</body>
+</html>
