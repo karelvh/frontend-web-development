@@ -50,3 +50,5 @@ TODO.md
 css/main.css
 *-min.*
 *.pdf
+
+node_modules
